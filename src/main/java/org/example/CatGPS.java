@@ -15,16 +15,18 @@ public class CatGPS {
         while(true) {
             try {
                 amount = Integer.parseInt(scanner.nextLine());
+                if(amount<2)
+                    throw new NumberFormatException();
                 break;
             } catch (NumberFormatException e) {
-                System.out.println("Wrong input, provide a number less than 5000");
+                System.out.println("Wrong input, provide a number more than 2 and less than 5000");
             }
         }
-            System.out.println("Do you want to provide coordinates? Otherwise they will be random generated. Y/N\n");
+            System.out.println("Do you want to autogenerate the coordinates?. Y/N\n");
         String input = scanner.nextLine().toLowerCase();
         while(wrongInput){
             switch (input) {
-                case "y":
+                case "n":
                     for (int i = 0; i < amount; i++) {
                         int x,y;
                         while(true) {
@@ -46,7 +48,7 @@ public class CatGPS {
                     }
                     wrongInput = false;
                     break;
-                case "n":
+                case "y":
                     GetRandomCoordinates getRandomCoordinates = new GetRandomCoordinates();
                     coordinates = getRandomCoordinates.getPoints(amount);
                     wrongInput = false;
@@ -58,8 +60,8 @@ public class CatGPS {
         CatsRoute catsRoute = new CatsRoute(coordinates);
         for (Coordinates x : coordinates) {
             System.out.println(x);
-
         }
+        System.out.println("\nStart point: " + catsRoute.getStartPoint() + "\nEnd point: " + catsRoute.getEndPoint());
 
     }
 

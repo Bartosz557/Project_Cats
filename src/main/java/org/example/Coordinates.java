@@ -8,10 +8,11 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Coordinates {
+
     private int x,y;
 
     @Override
     public String toString() {
-        return "X: "+x+"  Y: "+y;
+        return String.format("X : %-5d  Y : %d", x, y);
     }
 }

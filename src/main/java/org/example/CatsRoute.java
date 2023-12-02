@@ -27,11 +27,9 @@ public class CatsRoute {
     }
 
     private void setEndPoint() {
-        while (true){
-            this.endPoint =  coordinates.get(random.nextInt(coordinates.size()-1) + 1);
-            if(this.endPoint != this.startPoint)
-                break;
-        }
+        do {
+            this.endPoint = coordinates.get(random.nextInt(coordinates.size() - 1) + 1);
+        } while (this.endPoint == this.startPoint);
     }
 
 }

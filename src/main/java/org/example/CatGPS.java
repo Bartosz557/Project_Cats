@@ -1,15 +1,16 @@
 package org.example;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
 public class CatGPS {
-    int amount;
-    boolean wrongInput=true;
-    List<Coordinates> coordinates = new ArrayList<>();
+    private boolean wrongInput=true;
+    private List<Coordinates> coordinates = new ArrayList<>();
+    private List<HashMap<Integer, Coordinates>> routes = new ArrayList<>();
     public void generateCatsRoute() {
-
+        int amount;
         Scanner scanner = new Scanner(System.in);
         System.out.println("Provide the amount of coordinates:\n");
         while(true) {
@@ -61,8 +62,7 @@ public class CatGPS {
         for (Coordinates x : coordinates) {
             System.out.println(x);
         }
-        System.out.println("\nStart point: " + catsRoute.getStartPoint() + "\nEnd point: " + catsRoute.getEndPoint());
-
+        routes.add(catsRoute.getRoute());
     }
 
 

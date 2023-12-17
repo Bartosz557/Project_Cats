@@ -1,14 +1,12 @@
-package org.example;
+package org.example.RouteCalculator;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Scanner;
 
 public class CatGPS {
     private boolean wrongInput=true;
     private List<Coordinates> coordinates = new ArrayList<>();
-    private List<HashMap<Integer, Coordinates>> routes = new ArrayList<>();
     public void generateCatsRoute() {
         int amount;
         Scanner scanner = new Scanner(System.in);
@@ -32,7 +30,7 @@ public class CatGPS {
                         int x,y;
                         while(true) {
                             try {
-                                System.out.println("Provide coordinates:\n");
+                                System.out.println("\nProvide coordinates:\n");
                                 System.out.println("X:\n");
                                 x = Integer.parseInt(scanner.nextLine());
                                 System.out.println("Y:\n");
@@ -62,7 +60,7 @@ public class CatGPS {
         for (Coordinates x : coordinates) {
             System.out.println(x);
         }
-        routes.add(catsRoute.getRoute());
+        catsRoute.getRoute();
     }
 
 

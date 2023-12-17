@@ -1,4 +1,4 @@
-package org.example;
+package org.example.part2;
 
 public class CatHauntOptimizer {
 }

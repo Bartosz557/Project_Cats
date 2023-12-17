@@ -1,5 +1,9 @@
 package org.example;
 
+import org.example.RouteCalculator.CatGPS;
+import org.example.part2.CatHauntOptimizer;
+import org.example.part3.CatHauntScore;
+
 import java.util.Scanner;
 
 public class Main {
@@ -22,6 +26,11 @@ public class Main {
                     break;
                 default:
                     System.out.println("Wrong number, write 1,2 or 3");
+            }
+            System.out.println("Press Enter to continue...");
+            scanner.nextLine();
+            for (int i = 0; i < 100; i++) {
+                System.out.println();
             }
         }
     }

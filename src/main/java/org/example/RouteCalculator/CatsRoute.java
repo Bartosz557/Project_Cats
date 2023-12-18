@@ -82,7 +82,7 @@ public class CatsRoute extends GetDistance{
             Coordinates nextCoordinate = entryList.get(i + 1).getValue();
             totalDistance += calculateDistance(currentCoordinate, nextCoordinate);
         }
-        return (int)totalDistance;
+        return (int)Math.round(totalDistance);
     }
 
     private Coordinates getCenterPoint(){

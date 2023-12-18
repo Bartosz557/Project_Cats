@@ -20,6 +20,7 @@ public class Main {
                     break;
                 case "2":
                     CatHauntScore catHauntScore = new CatHauntScore();
+                    catHauntScore.optimizeHaunting();
                     break;
                 case "3":
                     CatHauntOptimizer catHauntOptimizer = new CatHauntOptimizer();

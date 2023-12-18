@@ -1,8 +1,5 @@
 package org.example.part3;
-import org.example.part2.Animal;
-import org.example.part2.CatName;
-import org.example.part2.PreyType;
-import org.example.part2.Measurements;
+import org.example.part2.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,6 +16,7 @@ public class CatHauntScore {
     private final CatName[] catNames = {CatName.LUNA, CatName.ARIANA, CatName.DANTE};
     private final HashMap<CatName,List<Animal>> cats = new HashMap<>();
     private final HashMap<CatName,double[]> values = new HashMap<>();
+
     public void optimizeHaunting(){
         for (HashMap.Entry<CatName, List<Animal>> entry : cats.entrySet()) {
             System.out.println("Cat: " + entry.getKey());
@@ -27,6 +25,14 @@ public class CatHauntScore {
                 System.out.println(animal);
             }
             System.out.println();
+        }
+        AllocatePrey allocatePrey = new AllocatePrey();
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 2; j++) {
+                System.out.println();
+            }
+            System.out.print("Priority for " + catNames[i] + ":\n");
+            allocatePrey.valuePreys(cats.get(catNames[i]));
         }
     }
 
@@ -49,7 +55,7 @@ public class CatHauntScore {
             animals.add(new Animal(PreyType.SNAIL, values.get(catNames[i])[2], new Measurements(3, 3, 3)));
             animals.add(new Animal(PreyType.LEAF, values.get(catNames[i])[3], new Measurements(3, 2, 1)));
             animals.add(new Animal(PreyType.ROCK, values.get(catNames[i])[4], new Measurements(2, 2, 1)));
-            animals.add(new Animal(PreyType.EMPTY, values.get(catNames[i])[0], new Measurements(0, 0, 0)));
+            //animals.add(new Animal(PreyType.EMPTY, values.get(catNames[i])[0], new Measurements(0, 0, 0)));
             cats.put(catNames[i],animals);
         }
     }

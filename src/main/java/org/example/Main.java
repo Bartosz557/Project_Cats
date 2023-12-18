@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.RouteCalculator.CatGPS;
+
 import org.example.part2.CatHauntOptimizer;
 import org.example.part3.CatHauntScore;
 

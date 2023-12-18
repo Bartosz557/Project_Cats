@@ -5,6 +5,6 @@ public enum PreyType {
     HOUSE_MOUSE,
     SNAIL,
     LEAF,
-    ROCK,
-    EMPTY
+    ROCK
+    //EMPTY
 }

@@ -7,9 +7,7 @@ public class AllocatePrey {
     CustomTreeMap<Double, Animal> preyPrio;
 
     public void allocatePreys(){
-
     }
-
     public void valuePreys(List<Animal> animals){
         preyPrio = new CustomTreeMap<>(Comparator.reverseOrder());
         for (Animal animal : animals) {

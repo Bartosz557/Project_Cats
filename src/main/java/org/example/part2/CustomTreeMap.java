@@ -11,7 +11,6 @@ public class CustomTreeMap<K, V> extends TreeMap<K, V> {
     public CustomTreeMap(Comparator<? super K> comparator) {
         super(comparator);
     }
-
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder();

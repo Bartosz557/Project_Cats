@@ -60,5 +60,4 @@ public class CatHauntScore {
         }
     }
     /** SETTERS **/
-
 }

@@ -6,5 +6,4 @@ public enum PreyType {
     SNAIL,
     LEAF,
     ROCK
-    //EMPTY
 }

@@ -4,7 +4,6 @@ import org.example.RouteCalculator.CatGPS;
 
 import org.example.part2.CatHauntOptimizer;
 import org.example.part3.CatHauntScore;
-
 import java.util.Scanner;
 
 public class Main {

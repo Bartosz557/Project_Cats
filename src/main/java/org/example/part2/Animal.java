@@ -3,7 +3,6 @@ package org.example.part2;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
-
 import java.text.DecimalFormat;
 
 @Setter

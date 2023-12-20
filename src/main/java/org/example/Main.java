@@ -2,8 +2,8 @@ package org.example;
 
 import org.example.RouteCalculator.CatGPS;
 
-import org.example.part2.CatHauntOptimizer;
-import org.example.part3.CatHauntScore;
+import org.example.part3.CatHauntOptimizer;
+import org.example.part2.CatHauntScore;
 import java.util.Scanner;
 
 public class Main {

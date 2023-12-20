@@ -1,4 +1,4 @@
-package org.example.part3;
+package org.example.part2;
 import org.example.part2.*;
 
 import java.util.ArrayList;
@@ -12,7 +12,6 @@ public class CatHauntScore {
         setAnimals();
     }
 
-    private HashMap<Measurements, PreyType> score = new HashMap<>(); // 3D map of the storage
     private final CatName[] catNames = {CatName.LUNA, CatName.ARIANA, CatName.DANTE};
     private final HashMap<CatName,List<Animal>> cats = new HashMap<>();
     private final HashMap<CatName,double[]> values = new HashMap<>();

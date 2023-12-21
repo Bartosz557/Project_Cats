@@ -1,5 +1,8 @@
 package org.example.part2;
-import org.example.part2.*;
+import org.example.TypeClasses.Animal;
+import org.example.TypeClasses.CatName;
+import org.example.TypeClasses.Measurements;
+import org.example.TypeClasses.PreyType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,9 +15,8 @@ public class CatHauntScore {
         setValues();
         setAnimals();
     }
-    private Scanner scanner = new Scanner(System.in);
+    private final Scanner scanner = new Scanner(System.in);
 
-    private final CatName[] catNames = {CatName.LUNA, CatName.ARIANA, CatName.DANTE};
     private final HashMap<CatName,List<Animal>> cats = new HashMap<>();
     private final HashMap<CatName,double[]> values = new HashMap<>();
 
@@ -32,9 +34,9 @@ public class CatHauntScore {
             for (int j = 0; j < 2; j++) {
                 System.out.println();
             }
-            System.out.print("Priority for " + catNames[i] + ":\n");
-            allocatePrey.valuePreys(cats.get(catNames[i]));
-            System.out.print("Allocation for " + catNames[i] + ":\n");
+            System.out.print("Priority for " + CatName.values()[i] + ":\n");
+            allocatePrey.valuePreys(cats.get(CatName.values()[i]));
+            System.out.print("Allocation for " + CatName.values()[i] + ":\n");
             allocatePrey.allocatePreys();
             if(i<2) {
                 System.out.println("\nPress Enter to allocate next cat's storage...");
@@ -51,18 +53,18 @@ public class CatHauntScore {
                 {0.2, 0.2, 0.05, 0.05, 0.5}        // Dante
         };
         for (int i = 0; i < 3; i++) {
-            values.put(catNames[i],preyValues[i]);
+            values.put(CatName.values()[i],preyValues[i]);
         }
     }
     private void setAnimals(){
         for (int i = 0; i < 3; i++) {
             List<Animal> animals = new ArrayList<>();
-            animals.add(new Animal(PreyType.FIELD_MOUSE, values.get(catNames[i])[0], new Measurements(5, 3, 3)));
-            animals.add(new Animal(PreyType.HOUSE_MOUSE, values.get(catNames[i])[1], new Measurements(7, 2, 2)));
-            animals.add(new Animal(PreyType.SNAIL, values.get(catNames[i])[2], new Measurements(3, 3, 3)));
-            animals.add(new Animal(PreyType.LEAF, values.get(catNames[i])[3], new Measurements(3, 2, 1)));
-            animals.add(new Animal(PreyType.ROCK, values.get(catNames[i])[4], new Measurements(2, 2, 1)));
-            cats.put(catNames[i],animals);
+            animals.add(new Animal(PreyType.FIELD_MOUSE, values.get(CatName.values()[i])[0], new Measurements(5, 3, 3)));
+            animals.add(new Animal(PreyType.HOUSE_MOUSE, values.get(CatName.values()[i])[1], new Measurements(7, 2, 2)));
+            animals.add(new Animal(PreyType.SNAIL, values.get(CatName.values()[i])[2], new Measurements(3, 3, 3)));
+            animals.add(new Animal(PreyType.LEAF, values.get(CatName.values()[i])[3], new Measurements(3, 2, 1)));
+            animals.add(new Animal(PreyType.ROCK, values.get(CatName.values()[i])[4], new Measurements(2, 2, 1)));
+            cats.put(CatName.values()[i],animals);
         }
     }
     /** SETTERS **/

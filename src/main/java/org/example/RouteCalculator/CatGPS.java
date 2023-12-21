@@ -1,5 +1,7 @@
 package org.example.RouteCalculator;
 
+import org.example.TypeClasses.Coordinates;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;

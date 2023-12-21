@@ -1,4 +1,4 @@
-package org.example.part2;
+package org.example.TypeClasses;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

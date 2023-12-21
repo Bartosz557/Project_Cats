@@ -2,7 +2,7 @@ package org.example;
 
 import org.example.RouteCalculator.CatGPS;
 
-import org.example.part3.CatHauntOptimizer;
+import org.example.part3.CatsHauntingRoute;
 import org.example.part2.CatHauntScore;
 import java.util.Scanner;
 
@@ -24,7 +24,8 @@ public class Main {
                     System.out.println("\nThe best prey for allocation the free space is always the rock\nbecause even for wage 0.0 the (amount/2 = 250) is bigger than anything else\nxd\n");
                     break;
                 case "3":
-                    CatHauntOptimizer catHauntOptimizer = new CatHauntOptimizer();
+                    CatsHauntingRoute catsHauntingRoute = new CatsHauntingRoute();
+                    catsHauntingRoute.catHauntingRoute();
                     break;
                 default:
                     System.out.println("Wrong number, write 1,2 or 3");

@@ -1,4 +1,4 @@
-package org.example.part2;
+package org.example.TypeClasses;
 
 public enum PreyType {
     FIELD_MOUSE,

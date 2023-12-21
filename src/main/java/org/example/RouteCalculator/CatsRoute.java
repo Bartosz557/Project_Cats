@@ -1,5 +1,6 @@
 package org.example.RouteCalculator;
 import lombok.*;
+import org.example.TypeClasses.Coordinates;
 
 import java.util.*;
 

@@ -1,6 +1,9 @@
 package org.example.part2;
 
-import org.example.RouteCalculator.Coordinates;
+import org.example.TypeClasses.Animal;
+import org.example.TypeClasses.CustomTreeMap;
+import org.example.TypeClasses.Measurements;
+import org.example.TypeClasses.PreyType;
 
 import java.util.*;
 

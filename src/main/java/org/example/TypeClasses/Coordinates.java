@@ -1,4 +1,4 @@
-package org.example.RouteCalculator;
+package org.example.TypeClasses;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

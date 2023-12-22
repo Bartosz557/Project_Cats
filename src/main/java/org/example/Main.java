@@ -30,7 +30,7 @@ public class Main {
                 default:
                     System.out.println("Wrong number, write 1,2 or 3");
             }
-            System.out.println("Press Enter to continue...");
+            System.out.println("\nPress Enter to continue...");
             scanner.nextLine();
             for (int i = 0; i < 100; i++) {
                 System.out.println();

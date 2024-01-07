@@ -1,7 +1,5 @@
 package org.example.TypeClasses;
 
-import org.example.TypeClasses.Animal;
-
 import java.text.DecimalFormat;
 import java.util.Comparator;
 import java.util.Map;

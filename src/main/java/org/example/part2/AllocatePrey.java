@@ -8,9 +8,9 @@ import org.example.TypeClasses.PreyType;
 import java.util.*;
 
 public class AllocatePrey {
-    private HashMap<Measurements, PreyType> score = new HashMap<>(); // 3D map of the storage
-    private HashMap<Measurements, PreyType> potentialAllocation = new HashMap<>();
-    private Measurements storageSize = new Measurements(10,20,10);
+    private final HashMap<Measurements, PreyType> score = new HashMap<>(); // 3D map of the storage
+    private final HashMap<Measurements, PreyType> potentialAllocation = new HashMap<>();
+    private final Measurements storageSize = new Measurements(10,20,10);
 
     PreyType currentType;
 

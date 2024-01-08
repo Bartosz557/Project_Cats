@@ -1,9 +1,9 @@
-package org.example.part2;
+package org.example.StorageLoader_Part3;
 
-import org.example.TypeClasses.Animal;
-import org.example.TypeClasses.CustomTreeMap;
-import org.example.TypeClasses.Measurements;
-import org.example.TypeClasses.PreyType;
+import org.example.TypeModels.Animal;
+import org.example.TypeModels.CustomTreeMap;
+import org.example.TypeModels.Measurements;
+import org.example.TypeModels.PreyType;
 
 import java.util.*;
 
@@ -11,9 +11,7 @@ public class AllocatePrey {
     private final HashMap<Measurements, PreyType> score = new HashMap<>(); // 3D map of the storage
     private final HashMap<Measurements, PreyType> potentialAllocation = new HashMap<>();
     private final Measurements storageSize = new Measurements(10,20,10);
-
-    PreyType currentType;
-
+    private PreyType currentType;
     private CustomTreeMap<Double, Animal> preyPrio;
 
     public void allocatePreys() {
@@ -39,7 +37,6 @@ public class AllocatePrey {
             }
         }
     }
-
     private void putAllocation() {
         for (Map.Entry<Measurements, PreyType> entry : potentialAllocation.entrySet()) {
             Measurements key = entry.getKey();
@@ -48,7 +45,6 @@ public class AllocatePrey {
         }
         potentialAllocation.clear();
     }
-
     private boolean checkSpace(Measurements animalSize, Measurements currentPos){
         for (int i = currentPos.getX(); i < animalSize.getX()+currentPos.getX(); i++) {
             for (int j = currentPos.getY(); j < animalSize.getY()+currentPos.getY(); j++) {
@@ -65,7 +61,6 @@ public class AllocatePrey {
         }
         return true;
     }
-
     private boolean duplicatedCoords(Measurements coord){
         for (Map.Entry<Measurements, PreyType> entry : score.entrySet()) {
             if(entry.getKey().getX()==coord.getX() && entry.getKey().getY()==coord.getY() && entry.getKey().getZ()==coord.getZ()) {
@@ -75,7 +70,6 @@ public class AllocatePrey {
         }
         return false;
     }
-
     private boolean isValid(Measurements coords) {
         if (coords.getX() >= storageSize.getX() || coords.getY() >= storageSize.getY() || coords.getZ() >= storageSize.getZ()) {
             System.out.println("invalid coords");

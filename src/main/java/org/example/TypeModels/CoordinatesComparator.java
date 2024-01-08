@@ -1,4 +1,4 @@
-package org.example.TypeClasses;
+package org.example.TypeModels;
 
 import java.util.Comparator;
 

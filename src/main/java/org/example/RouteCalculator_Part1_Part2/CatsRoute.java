@@ -1,6 +1,6 @@
-package org.example.RouteCalculator;
+package org.example.RouteCalculator_Part1_Part2;
 import lombok.*;
-import org.example.TypeClasses.Coordinates;
+import org.example.TypeModels.Coordinates;
 
 import java.util.*;
 
@@ -20,46 +20,39 @@ public class CatsRoute extends GetDistance{
         setStartPoint();
         setEndPoint();
     }
-
     public void getRoute() {
-
         GetClosestPoints getClosestPoints = new GetClosestPoints(routeStepsNumber, coordinates, getCenterPoint());
-        getClosestPoints.calculateClosestPoints();
+        coordinates = getClosestPoints.calculateClosestPoints();
         HashMap<Integer, Coordinates> bestRoute = findShortestRoute(coordinates, routeStepsNumber, startPoint, endPoint);
         System.out.println("Shortest Route:");
         for (Map.Entry<Integer, Coordinates> entry : bestRoute.entrySet()) {
             Integer key = entry.getKey();
             Coordinates value = entry.getValue();
-            System.out.println(String.format("Step: %-4s Coordinates: %-4s", key, value));
+            System.out.printf("Step: %-4s Coordinates: %-4s%n", key, value);
         }
         int totalDistance = calculateTotalDistance(bestRoute);
         System.out.println("Total Distance: " + totalDistance/100 + "m");
     }
-
     private HashMap<Integer, Coordinates> findShortestRoute(List<Coordinates> coordinates, int numSteps, Coordinates start, Coordinates end) {
         HashMap<Integer, Coordinates> bestRoute = nearestNeighbor(coordinates);
         bestRoute.put(1, start);
         bestRoute.put(numSteps, end);
         return bestRoute;
     }
-
     private HashMap<Integer, Coordinates> nearestNeighbor(List<Coordinates> coordinates) {
         HashMap<Integer, Coordinates> route = new HashMap<>();
-        int i=2;
         Coordinates lastCoordinate;
-        for (int j = 0; j < routeStepsNumber-2; j++) {
+        for (int i = 2; i < routeStepsNumber; i++) {
             if(i==2)
                 lastCoordinate = startPoint;
             else
                 lastCoordinate = route.get(i-1);
             Coordinates nearestNeighbor = findNearestNeighbor(lastCoordinate, coordinates);
             route.put(i,nearestNeighbor);
-            i++;
             coordinates.remove(nearestNeighbor);
         }
         return route;
     }
-
     private Coordinates findNearestNeighbor(Coordinates source, List<Coordinates> candidates) {
         double minDistance = Double.MAX_VALUE;
         Coordinates nearestNeighbor = null;
@@ -73,7 +66,6 @@ public class CatsRoute extends GetDistance{
         }
         return nearestNeighbor;
     }
-
     private int calculateTotalDistance(HashMap<Integer, Coordinates> route) {
         double totalDistance = 0;
         List<Map.Entry<Integer, Coordinates>> entryList = new ArrayList<>(route.entrySet());
@@ -85,18 +77,15 @@ public class CatsRoute extends GetDistance{
         }
         return (int)Math.round(totalDistance);
     }
-
     private Coordinates getCenterPoint(){
         int newX = (startPoint.getX() + startPoint.getX()) / 2;
         int newY = (endPoint.getY() + endPoint.getY()) / 2;
         return new Coordinates(newX, newY);
     }
-
-
-    /** SETTERS **/
+    /* SETTERS */
     private void setRouteStepsNumber() {
-        this.routeStepsNumber = random.nextInt(coordinates.size())+2;
-    }
+        this.routeStepsNumber = random.nextInt(coordinates.size()-2)+3;
+    } // 3 is the minimum
     private void setStartPoint() {
         this.startPoint = coordinates.get(random.nextInt(coordinates.size()));
         coordinates.remove(this.startPoint);
@@ -105,5 +94,5 @@ public class CatsRoute extends GetDistance{
         this.endPoint = coordinates.get(random.nextInt(coordinates.size()));
         coordinates.remove(this.endPoint);
     }
-    /** SETTERS **/
+    /* SETTERS */
 }

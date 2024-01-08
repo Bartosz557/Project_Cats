@@ -1,10 +1,10 @@
 package org.example;
 
-import org.example.RouteCalculator.CatGPS;
+import org.example.RouteCalculator_Part1_Part2.CatGPS;
 
-import org.example.part3.CatsHauntingRoute;
-import org.example.part2.CatHauntScore;
-import org.example.part5.DivideArea;
+import org.example.HauntRouteOptimizer_Part4.CatsHauntingRoute;
+import org.example.StorageLoader_Part3.CatHauntScore;
+import org.example.HuntAreaOrganizer_Part5.AssignAreasForCats;
 
 import java.util.Scanner;
 
@@ -30,8 +30,8 @@ public class Main {
                     catsHauntingRoute.catHauntingRoute();
                     break;
                 case "4":
-                    DivideArea divideArea = new DivideArea();
-                    divideArea.checkAreas();
+                    AssignAreasForCats assignAreasForCats = new AssignAreasForCats();
+                    assignAreasForCats.divideMap();
                     break;
                 default:
                     System.out.println("Wrong number, write 1,2, 3 or 4");

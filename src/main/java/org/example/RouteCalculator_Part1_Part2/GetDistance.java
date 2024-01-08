@@ -1,6 +1,6 @@
-package org.example.RouteCalculator;
+package org.example.RouteCalculator_Part1_Part2;
 
-import org.example.TypeClasses.Coordinates;
+import org.example.TypeModels.Coordinates;
 
 public class GetDistance {
     public double calculateDistance(Coordinates c1, Coordinates c2) {

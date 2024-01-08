@@ -1,20 +1,20 @@
-package org.example.part5;
+package org.example.HuntAreaOrganizer_Part5;
 
-import org.example.TypeClasses.AreaScore;
-import org.example.TypeClasses.Coordinates;
-import org.example.TypeClasses.PreyType;
-import org.example.part3.RandomizePreys;
+import org.example.TypeModels.AreaScore;
+import org.example.TypeModels.Coordinates;
+import org.example.TypeModels.PreyType;
+import org.example.HauntRouteOptimizer_Part4.RandomizePreys;
 
 import java.util.HashMap;
 
-public class DivideArea {
+public class AssignAreasForCats {
 
     private final HashMap<Coordinates, AreaScore> areas = new HashMap<>();
     private final RandomizePreys randomizePreys = new RandomizePreys();
     private final Coordinates mapSize = new Coordinates(5000,5000);
     private final Coordinates areaSize = new Coordinates(100,100);
 
-    public void checkAreas(){
+    public void divideMap(){
         HashMap<Coordinates, PreyType> preyCoords = randomizePreys.randomPreys(mapSize);
         for (int i = 0; i < mapSize.getX()/ areaSize.getX(); i++) {
             for (int l = 0; l < mapSize.getY()/ areaSize.getY(); l++) {
@@ -29,8 +29,8 @@ public class DivideArea {
                 areas.put(new Coordinates(areaSize.getX() * i,areaSize.getY() * l), areaScore);
             }
         }
-        AssignArea assignArea = new AssignArea(areas);
-        assignArea.assignAreasToCats();
+        AssignMassCentreAreas assignMassCentreAreas = new AssignMassCentreAreas(areas);
+        assignMassCentreAreas.assignAreasToCats();
     }
     private void addValue(PreyType preyType, AreaScore areaScore){
         switch (preyType) {

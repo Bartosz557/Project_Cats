@@ -1,8 +1,8 @@
-package org.example.part3;
+package org.example.HauntRouteOptimizer_Part4;
 
-import org.example.TypeClasses.CatName;
-import org.example.TypeClasses.Coordinates;
-import org.example.TypeClasses.PreyType;
+import org.example.TypeModels.CatName;
+import org.example.TypeModels.Coordinates;
+import org.example.TypeModels.PreyType;
 
 import java.util.*;
 
@@ -12,24 +12,20 @@ public class CatsHauntingRoute {
         setHauntTime();
     }
     Scanner scanner = new Scanner(System.in);
-
     private final Random random = new Random();
     private final Coordinates mapSize = new Coordinates(5000,5000);
-    private final Coordinates homePoint = new Coordinates(2500,2500); //TODO: delete if its not useful
+    private final Coordinates homePoint = new Coordinates(2500,2500);
     private Coordinates currentPoint;
-    private final int timeLimit = 7200;
     private double currentTime;
     private int space = 5; // amount of free slots for the prey
-    private int currentCat;
-
-    private HashMap<PreyType,Double> hauntTime = new HashMap<>();
+    private final HashMap<PreyType,Double> hauntTime = new HashMap<>();
     List<Coordinates> steps;
     List<PreyType> preys;
-    private HashMap<CatName,List<Coordinates>> catsRoute = new HashMap<>();
-    private HashMap<CatName, List<PreyType>> catsTrophies = new HashMap<>();
+    private final HashMap<CatName,List<Coordinates>> catsRoute = new HashMap<>();
+    private final HashMap<CatName, List<PreyType>> catsTrophies = new HashMap<>();
     private HashMap<Coordinates, PreyType> preyCoords = new HashMap<>();
     public void catHauntingRoute(){
-        System.out.println("The map is a 5000x5000 board. In order to simplify the task we assume the home is a single coordinate - 2500;2500");
+        System.out.println("The map is a 5000x5000 board. In order to simplify the task we assume the home is a single coordinate - X : 2500  Y : 2500");
         System.out.println("For the exercise purposes we will commit a crime on a mathematics and assume that Pythagoras was wrong.\n\n\n");
         RandomizePreys randomizePreys = new RandomizePreys();
         preyCoords = randomizePreys.randomPreys(mapSize);
@@ -37,19 +33,16 @@ public class CatsHauntingRoute {
             Coordinates lastDirection = getRandomDirection();
             steps = new ArrayList<>();
             preys = new ArrayList<>();
-            currentCat = i;
             currentTime = 0;
             space = 5;
             currentPoint = new Coordinates(2500,2500);
             while(getTimeLeft()){
                 while (getTimeLeft() && space > 2) {
-                    /** There is 1/3 chance the next step will be the same as the previous one, so the route seems to be a bit more natural and straightforward */
+                    // There is 1/3 chance the next step will be the same as the previous one, so the route seems to be a bit more natural and straightforward
                     if (getDirection() > 0) {
                         lastDirection = getRandomDirection();
-                        currentPoint = addStep(lastDirection);
                     }
-                    else
-                        currentPoint = addStep(lastDirection);
+                    currentPoint = addStep(lastDirection);
                     checkForPrey();
                 }
                 while (currentPoint.getX() != homePoint.getX() && currentPoint.getY() != homePoint.getY()) {
@@ -95,9 +88,6 @@ public class CatsHauntingRoute {
                 System.out.println(prey);
         }
     }
-
-
-
     private int getHomeDirection(int distance) {
         int result;
         if (distance <= 0) {
@@ -109,7 +99,6 @@ public class CatsHauntingRoute {
             result = 1;
         return result;
     }
-
     private void checkForPrey() {
         Iterator<HashMap.Entry<Coordinates, PreyType>> iterator = preyCoords.entrySet().iterator();
         while (iterator.hasNext()) {
@@ -122,24 +111,20 @@ public class CatsHauntingRoute {
             }
         }
     }
-
     private boolean getTimeLeft(){
         double returnTime = getReturnTime();
-        /** The cat may have enough time to make 1 step and then return but if it catches a prey the time will not be enough to return anymore */
+        /* The cat may have enough time to make 1 step and then return but if it catches a prey the time will not be enough to return anymore */
         double fixedCurrentTime = currentTime + 1 + 60*3;
+        int timeLimit = 7200;
         return returnTime <= timeLimit - fixedCurrentTime;
-//        return true;
     }
-
     private double getReturnTime() {
         int xDistance = Math.abs(currentPoint.getX() - homePoint.getX());
         int yDistanace = Math.abs((currentPoint.getY() - homePoint.getY()));
-        /** Because cats may cross the map diagonally, which means for the distance = 2 (eg: up and right) the diagonal distance = 1 (eg: upper right) */
-        /** We simply don't care the coordinates are actually centimeters */
+        /* Because cats may cross the map diagonally, which means for the distance = 2 (eg: up and right) the diagonal distance = 1 (eg: upper right) */
         int distance = Math.max(xDistance,yDistanace);
         return (double) (distance + 1) /10 + 60*3*2 + 600;
     }
-
     private Coordinates getRandomDirection(){
         Coordinates coords;
         do {
@@ -152,36 +137,18 @@ public class CatsHauntingRoute {
     }
     private Coordinates addStep(Coordinates step){
         Coordinates newPos = getNewPos(step);
-        if(crossedRoute(newPos) || !validCoords(newPos))
+        if(!validCoords(newPos))
             return currentPoint;
         currentTime+=0.1;
         steps.add(newPos);
         return newPos;
     }
-
     private boolean validCoords(Coordinates coords){
-        if(coords.getX()>5000 || coords.getY()>5000 || coords.getX()<0 || coords.getY()<0)
-            return false;
-        return true;
+        return coords.getX() <= 5000 && coords.getY() <= 5000 && coords.getX() >= 0 && coords.getY() >= 0;
     }
     private Coordinates getNewPos(Coordinates step){
         return new Coordinates(currentPoint.getX()+step.getX(),currentPoint.getY()+step.getY());
     }
-    private boolean crossedRoute(Coordinates pos){
-//        for (int i = 0; i < currentCat; i++) {
-//            if(duplicatedCoords(pos,catsRoute.get(CatName.values()[i])))
-//                return true;
-//        }
-        return false;
-    }
-    private boolean duplicatedCoords(Coordinates coord, List<Coordinates> route){
-        for (Coordinates coords: route) {
-            if(coords.getX()==coord.getX() && coords.getY()==coord.getY())
-                return true;
-        }
-        return false;
-    }
-
     private void setHauntTime(){
         hauntTime.put(PreyType.FIELD_MOUSE,3.0*60.0);
         hauntTime.put(PreyType.HOUSE_MOUSE,2.0*60.0);

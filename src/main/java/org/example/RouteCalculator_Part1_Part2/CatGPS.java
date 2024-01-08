@@ -1,6 +1,6 @@
-package org.example.RouteCalculator;
+package org.example.RouteCalculator_Part1_Part2;
 
-import org.example.TypeClasses.Coordinates;
+import org.example.TypeModels.Coordinates;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,7 +16,7 @@ public class CatGPS {
         while(true) {
             try {
                 amount = Integer.parseInt(scanner.nextLine());
-                if(amount<2)
+                if(amount<3)
                     throw new NumberFormatException();
                 break;
             } catch (NumberFormatException e) {
@@ -59,11 +59,6 @@ public class CatGPS {
             }
         }
         CatsRoute catsRoute = new CatsRoute(coordinates);
-        for (Coordinates x : coordinates) {
-            System.out.println(x);
-        }
         catsRoute.getRoute();
     }
-
-
 }

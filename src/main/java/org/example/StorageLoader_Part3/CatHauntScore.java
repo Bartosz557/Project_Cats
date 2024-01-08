@@ -1,8 +1,8 @@
-package org.example.part2;
-import org.example.TypeClasses.Animal;
-import org.example.TypeClasses.CatName;
-import org.example.TypeClasses.Measurements;
-import org.example.TypeClasses.PreyType;
+package org.example.StorageLoader_Part3;
+import org.example.TypeModels.Animal;
+import org.example.TypeModels.CatName;
+import org.example.TypeModels.Measurements;
+import org.example.TypeModels.PreyType;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,14 +11,13 @@ import java.util.Scanner;
 
 public class CatHauntScore {
 
+    private final Scanner scanner = new Scanner(System.in);
+    private final HashMap<CatName,List<Animal>> cats = new HashMap<>();
+    private final HashMap<CatName,double[]> values = new HashMap<>();
     public CatHauntScore(){
         setValues();
         setAnimals();
     }
-    private final Scanner scanner = new Scanner(System.in);
-
-    private final HashMap<CatName,List<Animal>> cats = new HashMap<>();
-    private final HashMap<CatName,double[]> values = new HashMap<>();
 
     public void optimizeHaunting(){
         for (HashMap.Entry<CatName, List<Animal>> entry : cats.entrySet()) {
@@ -44,8 +43,7 @@ public class CatHauntScore {
             }
         }
     }
-
-    /** SETTERS **/
+    /* SETTERS */
     private void setValues(){
         double[][] preyValues = {
                 {0.4, 0.4, 0.1, 0.0, 0.1},         // Luna
@@ -67,5 +65,5 @@ public class CatHauntScore {
             cats.put(CatName.values()[i],animals);
         }
     }
-    /** SETTERS **/
+    /* SETTERS */
 }

@@ -1,4 +1,4 @@
-package org.example.TypeClasses;
+package org.example.TypeModels;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,6 +8,7 @@ import lombok.Setter;
 @Getter
 @AllArgsConstructor
 public class AnimalValue {
+
     private PreyType name;
     private double value;
     @Override

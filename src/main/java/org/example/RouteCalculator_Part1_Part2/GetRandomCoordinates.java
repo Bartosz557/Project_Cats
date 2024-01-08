@@ -1,12 +1,11 @@
-package org.example.RouteCalculator;
-import org.example.TypeClasses.Coordinates;
+package org.example.RouteCalculator_Part1_Part2;
+import org.example.TypeModels.Coordinates;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
 public class GetRandomCoordinates {
-
     Random random = new Random();
     final int mapSize = 5000;
     List<Coordinates> rPoints = new ArrayList<>();
@@ -22,7 +21,6 @@ public class GetRandomCoordinates {
         }
         return rPoints;
     }
-
     private boolean coordinateExists(List<Coordinates> coordinatesList, int x, int y) {
         for (Coordinates coordinates : coordinatesList) {
             if (coordinates.getX() == x && coordinates.getY() == y) {

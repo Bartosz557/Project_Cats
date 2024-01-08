@@ -1,4 +1,4 @@
-package org.example.TypeClasses;
+package org.example.TypeModels;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,26 +9,22 @@ import java.util.Objects;
 @AllArgsConstructor
 @Getter
 @Setter
-public class Coordinates {
+public class AreaScore {
 
-    private int x,y;
-
+    private int mouse, snail, mulch;
     @Override
     public String toString() {
-        return String.format("X : %-5d  Y : %d", x, y);
+        return String.format("Mouse: %-5dSnail: %-5dLeaves and rocks: %-5d", mouse, snail, mulch);
     }
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
-        Coordinates that = (Coordinates) obj;
-        return x == that.x && y == that.y;
+        AreaScore that = (AreaScore) obj;
+        return mouse == that.mouse && snail == that.snail && mulch == that.mulch;
     }
     @Override
     public int hashCode() {
-        return Objects.hash(x, y);
-    }
-    public Coordinates add(Coordinates other) {
-        return new Coordinates(this.x + other.x, this.y + other.y);
+        return Objects.hash(mouse, snail, mulch);
     }
 }
